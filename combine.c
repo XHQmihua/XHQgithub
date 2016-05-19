@@ -10,7 +10,7 @@
   char buf[50];
   char buf1[50];
   
-     char text[1024];
+  char text[1];
 
 printf("input an file path to open:");
 
@@ -26,8 +26,10 @@ printf("intput another file name: \n");
    fseek(stream1,0,SEEK_END);
          len=ftell(stream1);
    fseek(stream1,0,SEEK_SET);
-   fread(text,len,1,stream1);
-   fwrite(text,len,1,stream);
+
+while(fread(text,1,1,stream1)){
+        fwrite(text,1,1,stream);
+  }
    
    fclose(stream);
    fclose(stream1);
