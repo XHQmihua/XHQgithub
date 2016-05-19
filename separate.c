@@ -10,7 +10,8 @@
   char buf[50];
   char buf1[50];
   char buf2[50];
-  char text[1024];
+  char text[1];
+   
 
 printf("input an file path to open:");
 
@@ -27,10 +28,14 @@ fseek(stream,0,SEEK_END);
    fseek(stream,0,SEEK_SET);
          stream1=fopen(buf1,"w+");
          stream2=fopen(buf2,"w+");
-   fread(text,len2,1,stream);
-   fwrite(text,len2,1,stream1);
-   fread(text,len-len2,1,stream);
-   fwrite(text,len-len2,1,stream2);
+ while(fread(text,1,1,stream)) {
+
+   if(len2>=0){
+      fwrite(text,1,1,stream1);
+               len2--;}
+        else
+      fwrite(text,1,1,stream2);
+}
     
    fclose(stream);
    fclose(stream1);
